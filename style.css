@@ -1,0 +1,173 @@
+body {
+    display: grid;
+
+    grid-template-columns: auto 250px;
+
+    background-color: whitesmoke;
+}
+
+body>header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    grid-column: 1/ -1;
+}
+
+body>header>h1 {
+    margin: 0 auto 0 0;
+}
+
+body>header>a {
+    margin: 0 5px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+hr {
+    width: 100%;
+    grid-column: 1/ -1;
+}
+
+body>main {
+    padding: 0 10px;
+}
+
+article {
+    background-color: white;
+    border-radius: 10px;
+    padding: 7px;
+    margin: 10px 0;
+}
+
+article>header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+article>header>h1 {
+    font-size: 1.25em;
+    margin: 0;
+}
+
+article>header>a{
+    font-size: 14px;
+    margin-left: auto;
+    color: gray;
+}
+
+article>main {
+    margin: 10px auto;
+}
+
+article>button {
+    width: 100%;
+    padding: 5px;
+    font-size: larger;
+    font: bolder;
+    border: none;
+    border-radius: 10px;
+    background-color: #fee050;
+    color: white;
+}
+
+article>button:disabled {
+    background-color: #d1d5db;
+}
+
+[contenteditable="true"]:empty:before {
+    content: attr(placeholder);
+    color: #d1d5db;
+}
+
+[contenteditable="true"]:focus {
+    outline: none;
+}
+
+
+article>footer {
+    color: grey;
+    font-size: 12px;
+}
+
+aside {
+    height: 500px;
+
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    border: 0.25rem dashed #d1d5db;
+    border-radius: 0.25rem;
+
+    color: #d1d5db;
+}
+
+footer {
+    grid-column: 1/-1;
+}
+
+#login_form {
+    display: none;
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    background-color: #00000090;
+}
+
+.account_form {
+    width: 40vh;
+    height: 60vh;
+    background-color: white;
+
+    border-radius: 10px;
+
+    padding: 20px;
+}
+
+.account_form>header {
+    display: flex;
+    flex-direction: row;
+}
+
+.account_form>header>h1 {
+    font-size: 1.7em;
+    color: #e8a317;
+    margin-right: auto;
+}
+
+/*---***---*/
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.google {
+    width: 75px;
+    height: 75px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 100%;
+    padding: 10px;
+}
+
+/*---media---*/
+
+@media screen and (max-width: 700px) {
+    body {
+        grid-template-columns: auto;
+    }
+
+    aside {
+        display: none;
+    }
+}
