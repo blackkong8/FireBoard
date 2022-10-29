@@ -1,7 +1,6 @@
 {
   "hosting": {
     "public": "dist",
-    "target": "yboard",
     "ignore": [
       "firebase.json",
       "**/.*",
