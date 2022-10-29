@@ -1,16 +1,78 @@
 <template>
     <article>
         <header>
-            <h1 contenteditable="true" placeholder="Title" aria-required="true"></h1>
+            <h1 ref="title" contenteditable="true" placeholder="Title" aria-required="true"></h1>
         </header>
-        <main contenteditable="true" placeholder="Content"></main>
+        <main ref="content" contenteditable="true" placeholder="Content"></main>
         <footer>
         </footer>
-        <button>Post</button>
+        <button @click="post" ref="submit">Post</button>
     </article>
 </template>
 
 <script lang="ts">
+
+import { app } from './script/firebase_init'
+import {
+    getAuth,
+    onAuthStateChanged,
+    type User
+} from "firebase/auth"
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp,
+} from 'firebase/firestore'
+
+export default {
+    data() {
+        return {
+            db: getFirestore(app),
+            isLoggedIn: true,
+            userInfo: {} as User,
+        }
+    },
+    methods: {
+        post(e: object) {
+            const title: HTMLElement = (this.$refs.title as HTMLElement)
+            const content: HTMLElement = (this.$refs.content as HTMLElement)
+
+            const submit: HTMLSelectElement = (this.$refs.submit as HTMLSelectElement)
+
+            if (title.textContent && content.textContent && this.isLoggedIn) {
+                submit.disabled = true
+                addDoc(collection(this.db, "post"), {
+                    title: title.textContent,
+                    content: content.textContent,
+                    timestamp: serverTimestamp(),
+                    displayname: this.userInfo.displayName,
+                    uid: this.userInfo.uid,
+                }).then((docRef) => {
+                    console.log(docRef)
+                    title.textContent = '';
+                    content.textContent = '';
+                }).catch((e) => {
+                    console.log(e)
+                })
+                submit.disabled = false;
+            }
+        }
+    },
+    mounted() {
+        const auth = getAuth(app)
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                this.userInfo = user
+                this.isLoggedIn = true
+            } else {
+                this.userInfo = {} as User
+                this.isLoggedIn = false
+            }
+        })
+    }
+}
 
 </script>
 
