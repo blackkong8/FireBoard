@@ -1,7 +1,5 @@
-'use strict'
-
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js'
-import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js'
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAsU9jFE1N3LZcM8Sx5xF6DfSuo3K2FbWs",
@@ -11,7 +9,7 @@ const firebaseConfig = {
     messagingSenderId: "958479069333",
     appId: "1:958479069333:web:87859ab61ee5bd3b58eb9c",
     measurementId: "G-LPDG89WB3E"
-}
+};
 
 export const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+export const analytics = getAnalytics(app);
