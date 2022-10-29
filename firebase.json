@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "target": "yboard",
+    "site": "yboard",
     "public": "dist",
     "ignore": [
       "firebase.json",
