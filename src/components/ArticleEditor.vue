@@ -89,7 +89,7 @@ header {
     align-items: center;
 }
 
-h1 {
+article>header>h1 {
     font-size: 1.25em;
     margin: 0;
 }

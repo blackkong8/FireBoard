@@ -1,7 +1,7 @@
 <template>
     <article class="post">
         <header>
-            <h1>{{ post.title }}</h1>
+            <h1 class="title">{{ post.title }}</h1>
             <a>{{ post.displayname }}</a>
         </header>
         <main>
@@ -36,7 +36,7 @@ header {
     align-items: center;
 }
 
-h1 {
+.title {
     margin-right: auto;
 }
 
