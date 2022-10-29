@@ -1,27 +1,36 @@
-<script lang="ts">
-import { UpdateAccount, auth } from './script/accountManage';
-import { onAuthStateChanged } from "firebase/auth"
+<script setup lang="ts">
+import { ref, watchEffect } from 'vue'
+import { UpdateAccount, auth, userInfo } from './script/accountManage';
+import { onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 
-export default {
-    data() {
-        return {
-            show: true
-        };
-    },
-    methods: {
-        handleClick() {
-            UpdateAccount()
-        },
+const isLoggedIn = ref(true)
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        isLoggedIn.value = true
+    } else {
+        isLoggedIn.value = false
     }
+})
+
+const LogOut = () => {
+    auth.signOut()
+}
+
+const LogIn = () => {
+    const provider = new GoogleAuthProvider()
+    signInWithPopup(auth, provider)
 }
 
 </script>
 
 <template>
     <h1>FireBoard</h1>
-    <a @click="handleClick">
-        <p v-if="show">Log In</p>
-        <p v-else="show">Log Out</p>
+    <a v-if="isLoggedIn" @click="LogOut">
+        Log Out
+    </a>
+    <a v-else @click="LogIn">
+        Log In
     </a>
 </template>
 
