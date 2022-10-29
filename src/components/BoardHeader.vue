@@ -1,8 +1,14 @@
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue'
-import { UpdateAccount, auth, userInfo } from './script/accountManage';
-import { onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import { ref } from 'vue'
+import { app } from './script/firebase_init'
+import {
+    getAuth,
+    onAuthStateChanged,
+    GoogleAuthProvider,
+    signInWithPopup
+} from "firebase/auth"
 
+const auth = getAuth(app)
 const isLoggedIn = ref(true)
 
 onAuthStateChanged(auth, (user) => {

@@ -10,6 +10,10 @@
     </article>
 </template>
 
+<script lang="ts">
+
+</script>
+
 <style>
 article {
     border-radius: 10px;
