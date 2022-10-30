@@ -26,6 +26,7 @@ export async function getPosts(number: number) {
     const querySnapshot = await getDocs(q);
     await querySnapshot.forEach((doc) => {
         const data = doc.data();
+        lastArticle_t = data.timestamp;
         result.push(data);
     })
 
