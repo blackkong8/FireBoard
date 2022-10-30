@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "yboard",
+    "site": "fireboard-df471",
     "public": "dist",
     "ignore": [
       "firebase.json",
