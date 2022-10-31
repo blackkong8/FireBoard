@@ -1,3 +1,36 @@
+/*---theme---*/
+:root {
+  --clearly-1: #298FA6;
+  --clearly-2: #F2B705;
+  --clearly-3: #D98E04;
+  --clearly-4: #A65D03;
+  --clearly-5: #D95204;
+
+  --brightly-1: #307B8C;
+  --brightly-2: #F2B705;
+  --brightly-3: #F29F05;
+  --brightly-4: #D97904;
+  --brightly-5: #D95204;
+
+  --softly-1: #2682A6;
+  --softly-2: #298FA6;
+  --softly-3: #F2B705;
+  --softly-4: #D98E04;
+  --softly-5: #A65D03;
+
+  --deeply-1: #307B8C;
+  --deeply-2: #F2B705;
+  --deeply-3: #D98E04;
+  --deeply-4: #8C5C03;
+  --deeply-5: #593202;
+
+  --darkly-1: #307B8C;
+  --darkly-2: #3E4001;
+  --darkly-3: #734B02;
+  --darkly-4: #261201;
+  --darkly-5: #260101;
+}
+
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --vt-c-white: #ffffff;
