@@ -1,10 +1,10 @@
 <template>
-    <article>
+    <article ref="editor" class="">
         <header>
             <h1 ref="title" contenteditable="true" placeholder="Title" aria-required="true"></h1>
         </header>
         <main ref="content" contenteditable="true" placeholder="Content"></main>
-        <footer>
+        <footer ref="footer">
         </footer>
         <button @click="post" ref="submit">Post</button>
     </article>
@@ -71,6 +71,21 @@ export default {
                 this.isLoggedIn = false
             }
         })
+
+        const editor = this.$refs.editor as HTMLElement
+        const footer = this.$refs.footer as HTMLElement
+
+        editor.ondrop = (e) => {
+            e.preventDefault();
+
+            let files;
+
+            if (e.dataTransfer) {
+                files = [...e.dataTransfer.files]
+
+                footer.textContent = files.map(file => file.name).join(' / ')
+            }
+        }
     }
 }
 
@@ -107,6 +122,12 @@ button {
 
 article>button:disabled {
     background-color: #d1d5db;
+}
+
+article>footer {
+    padding: 5px 0;
+    color: grey;
+    font-size: 12px;
 }
 
 [contenteditable="true"]:empty:before {
