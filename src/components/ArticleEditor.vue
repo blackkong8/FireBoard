@@ -24,11 +24,15 @@ import {
     addDoc,
     serverTimestamp,
 } from 'firebase/firestore'
+import {
+    getStorage, ref
+} from 'firebase/storage'
 
 export default {
     data() {
         return {
             db: getFirestore(app),
+            storage: getStorage(app),
             isLoggedIn: true,
             userInfo: {} as User,
         }
@@ -57,6 +61,9 @@ export default {
                 })
                 submit.disabled = false;
             }
+        },
+        upload(){
+            
         }
     },
     mounted() {
