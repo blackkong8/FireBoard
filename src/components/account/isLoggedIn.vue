@@ -6,10 +6,7 @@ import { ref, type Ref } from "vue"
 
 const isLoggedIn: Ref<undefined | boolean> = ref(undefined);
 
-let user;
-
 onAuthStateChanged(auth, (e) => {
-    user = e;
     if (e) {
         isLoggedIn.value = true;
     } else {
