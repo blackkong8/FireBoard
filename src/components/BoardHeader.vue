@@ -1,36 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { app } from './script/firebase_init'
-import {
-    getAuth,
-    onAuthStateChanged,
-    GoogleAuthProvider,
-    signInWithPopup
-} from "firebase/auth"
-
-const auth = getAuth(app)
-const isLoggedIn = ref(true)
-
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        isLoggedIn.value = true
-    } else {
-        isLoggedIn.value = false
-    }
-})
-
-const LogOut = () => {
-    auth.signOut()
-}
-
-const LogIn = () => {
-    const provider = new GoogleAuthProvider()
-    signInWithPopup(auth, provider)
-}
-
+import isLoggedIn from './account/isLoggedIn.vue';
+import { LogIn, LogOut } from './account/accountManage';
 </script>
 
-<template>
+<template style="display:none">
+    <!--
+        <icon />
+        <title />
+        <search />
+        <login />
+        <user />
+    -->
+    <!--
     <h1>FireBoard</h1>
     <a v-if="isLoggedIn" @click="LogOut">
         Log Out
@@ -38,15 +19,33 @@ const LogIn = () => {
     <a v-else @click="LogIn">
         Log In
     </a>
+    -->
+    <header>
+        <h1>FireBoard</h1>
+        <isLoggedIn>
+            <template #LoggedIn>
+                <p @click="LogOut">LogOut</p>
+            </template>
+            <template #LoggedOut>
+                <p @click="LogIn.google">LogIn</p>
+            </template>
+            <template #default>
+                <p>...</p>
+            </template>
+        </isLoggedIn>
+    </header>
 </template>
 
 <style scoped>
-h1 {
-    margin-right: auto;
+header {
+    grid-column: 1/-1;
+
+    display: flex;
+    align-items: center;
+    flex-direction: row;
 }
 
-a {
-    margin: 0 5px;
-    padding: 5px;
+h1 {
+    margin-right: auto;
 }
 </style>

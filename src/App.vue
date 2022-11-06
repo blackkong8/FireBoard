@@ -5,9 +5,7 @@ import BoardMain from "./components/BoardMain.vue";
 </script>
 
 <template>
-    <header class="full-width">
-        <BoardHeader />
-    </header>
+    <BoardHeader />
     <hr class="full-width">
     <main>
         <BoardMain />
@@ -21,11 +19,5 @@ import BoardMain from "./components/BoardMain.vue";
 .full-width {
     grid-column: 1/ -1;
     width: 100%;
-}
-
-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
 }
 </style>
