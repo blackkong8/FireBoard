@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import mainIcon from './icons/mainIcon.vue';
-
 import { ref } from 'vue'
 import { app } from './script/firebase_init'
 import {
