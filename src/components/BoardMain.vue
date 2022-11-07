@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted, onUnmounted, type Ref } from "vue";
-import { getPosts } from "./script/post-loader";
+import { getArticle } from "./article/articleManage";
 
 import BoardArticle from "./BoardArticle.vue";
 import ArticleEditor from "./ArticleEditor.vue";
@@ -11,10 +11,10 @@ export default
         setup() {
             const posts: Ref<any> = ref([])
             const scrollComponent = ref(null)
-            getPosts(10).then(data => (posts.value = data))
+            getArticle().then(data => (posts.value = data))
 
             const loadMorePosts = () => {
-                getPosts(10).then(data => posts.value.push(...data))
+                getArticle().then(data => posts.value.push(...data))
             }
             const handleScroll = (e: any) => {
                 let element: any = scrollComponent.value

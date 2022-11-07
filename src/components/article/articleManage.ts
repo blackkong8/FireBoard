@@ -1,3 +1,5 @@
+import { app } from "../script/firebase_init"
+
 import {
     getFirestore,
     collection,
@@ -7,16 +9,12 @@ import {
     where,
     getDocs,
 } from "firebase/firestore"
-import {
-    app
-} from "./firebase_init"
 
 const db = getFirestore(app);
-var lastArticle_t = new Date();
+let lastArticle_t = new Date();
 
-export async function getPosts(number: number) {
-    let result: Object[] = []
-
+const getArticle = async (number: number = 10) => {
+    let result: Object[] = [];
     const q = query(
         collection(db, "post"),
         orderBy("timestamp", "desc"),
@@ -29,6 +27,7 @@ export async function getPosts(number: number) {
         lastArticle_t = data.timestamp;
         result.push(data);
     })
-
     return result;
 }
+
+export { getArticle }
