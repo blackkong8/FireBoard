@@ -2,7 +2,7 @@
 import { defineComponent, ref, onMounted, onUnmounted, type Ref } from "vue";
 import { getArticle } from "./article/articleManage";
 
-import BoardArticle from "./BoardArticle.vue";
+import BoardArticle from "./article/BasicArticle.vue";
 import ArticleEditor from "./ArticleEditor.vue";
 
 export default
